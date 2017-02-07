@@ -20,12 +20,15 @@
 #if TARGET_UBLOX_EVK_ODIN_W2
 #include "OdinWiFiInterface.h"
 OdinWiFiInterface wifi;
+
 #else
 #if !TARGET_FF_ARDUINO
 #error [NOT_SUPPORTED] Only Arduino form factor devices are supported at this time
 #endif
 #include "ESP8266Interface.h"
-ESP8266Interface wifi(D1, D0);
+
+ESP8266Interface wifi(MBED_CONF_APP_WIFI_TX, MBED_CONF_APP_WIFI_RX);
+
 #endif
 
 const char *sec2str(nsapi_security_t sec)
