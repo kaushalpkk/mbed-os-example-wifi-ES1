@@ -14,9 +14,9 @@ if (params.mbed_os_revision == '') {
 // List of targets with supported RF shields to compile
 def targets = [
   "UBLOX_EVK_ODIN_W2": ["builtin"],
-  "REALTEK_RTL8195AM": ["builtin"],
+  // "REALTEK_RTL8195AM": ["builtin"], // Disabled because of https://github.com/ARMmbed/mbed-os/issues/5545
   "K64F": ["WIFI_ESP8266"],
-  "NUCLEO_F401RE": ["WIFI_IDW01M1"],
+  "NUCLEO_F401RE": ["WIFI_IDW0XX1"],
   "NUCLEO_F429ZI": ["WIFI_ESP8266"]
   ]
 
@@ -72,10 +72,6 @@ def buildStep(target, compilerLabel, toolchain, radioShield) {
             execute("sed -i 's/\"value\": \"internal\"/\"value\": \"${radioShield}\"/' ${config_file}")
           }
 
-          if ("${radioShield}" == "WIFI_IDW01M1") {
-            execute("rm .mbedignore")
-          }
-
           // Set mbed-os to revision received as parameter
           execute ("mbed deploy --protocol ssh")
           if (params.mbed_os_revision != '') {
@@ -88,7 +84,7 @@ def buildStep(target, compilerLabel, toolchain, radioShield) {
               }
             }
           }
-
+          execute("mbed new .")
           execute ("mbed compile --build out/${target}_${toolchain}_${radioShield}/ -m ${target} -t ${toolchain} -c --app-config ${config_file}")
         }
         stash name: "${target}_${toolchain}_${radioShield}", includes: '**/mbed-os-example-wifi.bin'
