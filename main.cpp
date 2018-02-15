@@ -28,6 +28,10 @@ OdinWiFiInterface wifi;
 #include "RTWInterface.h"
 RTWInterface wifi;
 
+#elif TARGET_DISCO_L475VG_IOT01A
+#include "ISM43362Interface.h"
+ISM43362Interface wifi(MBED_CONF_APP_WIFI_SPI_MOSI, MBED_CONF_APP_WIFI_SPI_MISO, MBED_CONF_APP_WIFI_SPI_SCLK, MBED_CONF_APP_WIFI_SPI_NSS, MBED_CONF_APP_WIFI_RESET, MBED_CONF_APP_WIFI_DATAREADY, MBED_CONF_APP_WIFI_WAKEUP, false);
+
 #else // External WiFi modules
 
 #if MBED_CONF_APP_WIFI_SHIELD == WIFI_ESP8266
@@ -66,6 +70,7 @@ int scan_demo(WiFiInterface *wifi)
     printf("Scan:\n");
 
     int count = wifi->scan(NULL,0);
+    printf("%d networks available.\n", count);
 
     /* Limit number of network arbitrary to 15 */
     count = count < 15 ? count : 15;
@@ -78,7 +83,6 @@ int scan_demo(WiFiInterface *wifi)
                sec2str(ap[i].get_security()), ap[i].get_bssid()[0], ap[i].get_bssid()[1], ap[i].get_bssid()[2],
                ap[i].get_bssid()[3], ap[i].get_bssid()[4], ap[i].get_bssid()[5], ap[i].get_rssi(), ap[i].get_channel());
     }
-    printf("%d networks available.\n", count);
 
     delete[] ap;
     return count;
