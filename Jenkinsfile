@@ -15,7 +15,8 @@ if (params.mbed_os_revision == '') {
 def targets = [
   "UBLOX_EVK_ODIN_W2": ["builtin"],
   "NUCLEO_F401RE": ["WIFI_IDW0XX1"],
-  "DISCO_L475VG_IOT01A": ["WIFI_ISM43362"]
+  "DISCO_L475VG_IOT01A": ["WIFI_ISM43362"],
+  "DISCO_F413ZH": ["WIFI_ISM43362"]
   ]
 
 // Map toolchains to compilers
