@@ -1,5 +1,5 @@
 /* WiFi Example
- * Copyright (c) 2016 ARM Limited
+ * Copyright (c) 2018 ARM Limited
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,27 +17,15 @@
 #include "mbed.h"
 #include "TCPSocket.h"
 
-#define WIFI_ESP8266    1
 #define WIFI_IDW0XX1    2
 
-#if TARGET_UBLOX_EVK_ODIN_W2
-#include "OdinWiFiInterface.h"
-OdinWiFiInterface wifi;
-
-#elif TARGET_REALTEK_RTL8195AM
-#include "RTWInterface.h"
-RTWInterface wifi;
-
-#elif TARGET_DISCO_L475VG_IOT01A
+#if defined(TARGET_DISCO_L475VG_IOT01A)
 #include "ISM43362Interface.h"
 ISM43362Interface wifi(MBED_CONF_APP_WIFI_SPI_MOSI, MBED_CONF_APP_WIFI_SPI_MISO, MBED_CONF_APP_WIFI_SPI_SCLK, MBED_CONF_APP_WIFI_SPI_NSS, MBED_CONF_APP_WIFI_RESET, MBED_CONF_APP_WIFI_DATAREADY, MBED_CONF_APP_WIFI_WAKEUP, false);
 
 #else // External WiFi modules
 
-#if MBED_CONF_APP_WIFI_SHIELD == WIFI_ESP8266
-#include "ESP8266Interface.h"
-ESP8266Interface wifi(MBED_CONF_APP_WIFI_TX, MBED_CONF_APP_WIFI_RX);
-#elif MBED_CONF_APP_WIFI_SHIELD == WIFI_IDW0XX1
+#if MBED_CONF_APP_WIFI_SHIELD == WIFI_IDW0XX1
 #include "SpwfSAInterface.h"
 SpwfSAInterface wifi(MBED_CONF_APP_WIFI_TX, MBED_CONF_APP_WIFI_RX);
 #endif // MBED_CONF_APP_WIFI_SHIELD == WIFI_IDW0XX1

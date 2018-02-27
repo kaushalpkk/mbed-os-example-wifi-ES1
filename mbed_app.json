@@ -1,7 +1,7 @@
 {
     "config": {
         "wifi-shield": {
-            "help": "Options are internal, WIFI_ESP8266, WIFI_IDW0XX1",
+            "help": "Options are internal, WIFI_IDW0XX1",
             "value": "internal"
         },
         "wifi-ssid": {
@@ -52,9 +52,6 @@
     "target_overrides": {
         "*": {
             "platform.stdio-convert-newlines": true
-        },
-        "UBLOX_EVK_ODIN_W2": {
-            "target.device_has": ["EMAC"]
         },
         "NUCLEO_L476RG": {
             "wifi-tx": "D8",

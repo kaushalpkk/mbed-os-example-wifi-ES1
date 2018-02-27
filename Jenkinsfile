@@ -14,10 +14,7 @@ if (params.mbed_os_revision == '') {
 // List of targets with supported RF shields to compile
 def targets = [
   "UBLOX_EVK_ODIN_W2": ["builtin"],
-  "REALTEK_RTL8195AM": ["builtin"],
-  "K64F": ["WIFI_ESP8266"],
   "NUCLEO_F401RE": ["WIFI_IDW0XX1"],
-  "NUCLEO_F429ZI": ["WIFI_ESP8266"],
   "DISCO_L475VG_IOT01A": ["WIFI_ISM43362"]
   ]
 
@@ -31,8 +28,7 @@ def toolchains = [
 // Supported RF shields
 def radioshields = [
   "builtin",
-  "WIFI_IDW0XX1",
-  "WIFI_ESP8266"
+  "WIFI_IDW0XX1"
   ]
 
 def stepsForParallel = [:]

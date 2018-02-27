@@ -12,23 +12,11 @@ For more information about Wi-Fi APIs, please visit the [Mbed OS Wi-Fi](https://
 
 ### Supported hardware ###
 
-* [u-blox Odin board](https://os.mbed.com/platforms/ublox-EVK-ODIN-W2/) built-in Wi-Fi module.
-* [Realtek RTL8195AM](https://os.mbed.com/platforms/REALTEK-RTL8195AM/) built-in Wi-Fi module.
 * [NUCLEO-F401RE](https://os.mbed.com/platforms/ST-Nucleo-F401RE/) with [X-NUCLEO-IDW04A1](http://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-idw04a1.html) Wi-Fi expansion board using pins D8 and D2 _(of the Arduino connector)_.
 * [NUCLEO-F401RE](https://os.mbed.com/platforms/ST-Nucleo-F401RE/) with [X-NUCLEO-IDW01M1](https://os.mbed.com/components/X-NUCLEO-IDW01M1/) Wi-Fi expansion board using pins PA_9 and PA_10 _(of the Morpho connector)_.
-* [NUCLEO-F429ZI](https://os.mbed.com/platforms/ST-Nucleo-F429ZI/) with ESP8266-01 module using pins D1 and D0.
-* [NUCLEO-L476RG](https://os.mbed.com/platforms/ST-Nucleo-L476RG/) with ESP8266-01 module using pins D8 and D2.
 * [DISCO_L475VG_IOT01A](https://os.mbed.com/platforms/ST-Discovery-L475E-IOT01A/) with ISM43362 built-in module
-* Other Mbed targets with an ESP8266 module, [X-NUCLEO-IDW04A1](http://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-idw04a1.html) or [X-NUCLEO-IDW01M1](https://os.mbed.com/components/X-NUCLEO-IDW01M1/) expansion board.
+* Other Mbed targets with  [X-NUCLEO-IDW04A1](http://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-idw04a1.html) or [X-NUCLEO-IDW01M1](https://os.mbed.com/components/X-NUCLEO-IDW01M1/) expansion board.
   *(The Mbed target board the Wi-Fi shield connects to shouldn't have any other network interface, for example Ethernet.)*
-
-ESP8266 is a fallback option if the build is for unsupported platform.
-
-#### Connecting the ESP8266 ####
-
-To connect the ESP8266 module to your development board, look at the [ESP8266 Cookbook page](https://developer.mbed.org/users/4180_1/notebook/using-the-esp8266-with-the-mbed-lpc1768/). In general, this means hooking up the ESP8266 TX pin to `D0` and the ESP8266 RX pin to `D1` on your development board.
-
-**Note:** On NUCLEO development boards, pins `D0` and `D1` are used for serial communication with the computer. Use pins `D8` (to ESP8266 TX) and `D2` (to ESP8266 RX) instead.
 
 #### Connecting the X-NUCLEO-IDW0XX1 ####
 
@@ -50,8 +38,8 @@ To connect the [X-NUCLEO-IDW04A1](http://www.st.com/content/st_com/en/products/e
    ```
        "config": {
  	  "wifi-shield": {
-               "help": "Options are WIFI_ESP8266, WIFI_IDW0XX1",
-               "value": "WIFI_ESP8266"
+               "help": "Options are WIFI_IDW0XX1",
+               "value": "WIFI_IDW0XX1"
         	  },
            "wifi-ssid": {
                "help": "WiFi SSID",
@@ -64,7 +52,7 @@ To connect the [X-NUCLEO-IDW04A1](http://www.st.com/content/st_com/en/products/e
        },
    ```
 
-   Sample ```mbed_app.json``` files are provided for ESP8266 (```mbed_app_esp8266.json```), X-NUCLEO-IDW04A1 (```mbed_app_idw04a1.json```),  X-NUCLEO-IDW01M1 (```mbed_app_idw01m1```) and DISCO_L475VG_IOT01A/ISM43362 (```mbed_app_ism43362.json```)
+   Sample ```mbed_app.json``` files are provided for X-NUCLEO-IDW04A1 (```mbed_app_idw04a1.json```),  X-NUCLEO-IDW01M1 (```mbed_app_idw01m1```) and DISCO_L475VG_IOT01A/ISM43362 (```mbed_app_ism43362.json```)
    
    For built-in Wi-Fi, ignore the value of `wifi-shield`.
 
