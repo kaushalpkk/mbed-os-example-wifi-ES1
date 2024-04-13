@@ -81,11 +81,11 @@ void http_demo(NetworkInterface *net)
     TCPSocket socket;
     nsapi_error_t response;
 
-    printf("Sending HTTP request to www.arm.com...\n");
+    printf("Sending HTTP request to www.example.com...\n");
 
     // Open a socket on the network interface, and create a TCP connection to www.arm.com
     socket.open(net);
-    response = socket.connect("www.arm.com", 80);
+    response = socket.connect("www.example.com", 80);
     if(0 != response) {
         printf("Error connecting: %d\n", response);
         socket.close();
@@ -93,7 +93,7 @@ void http_demo(NetworkInterface *net)
     }
 
     // Send a simple http request
-    char sbuffer[] = "GET / HTTP/1.1\r\nHost: www.arm.com\r\n\r\n";
+    char sbuffer[] = "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n";
     nsapi_size_t size = strlen(sbuffer);
     response = 0;
     while(size)

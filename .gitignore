@@ -1,0 +1,8 @@
+BUILD
+?mbed
+compile_commands?json
+?clangd
+?cache
+mbed-os
+wifi-ism43362
+wifi-x-nucleo-idw01m1
